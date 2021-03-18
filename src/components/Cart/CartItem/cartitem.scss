@@ -1,0 +1,28 @@
+.cart__item {
+  display: flex;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  img {
+    width: 120px;
+  }
+  &-title {
+    margin-bottom: 20px;
+  }
+  &-desc {
+    margin-left: 20px;
+    margin-right: auto;
+  }
+  &-price {
+    margin-right: 30px;
+    font-size: 20px;
+    text-align: right;
+    p:first-child {
+      margin-bottom: 20px;
+    }
+  }
+}

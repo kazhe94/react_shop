@@ -1,0 +1,11 @@
+.product-page {
+  display: flex;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}

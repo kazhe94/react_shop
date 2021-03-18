@@ -1,0 +1,33 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  &__form {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    .btn {
+      display: block;
+      margin-right: 0;
+      margin-left: auto;
+      margin-top: 10px;
+    }
+  }
+}
+.form-control {
+  &:first-child {
+    input {
+      margin-bottom: 10px;
+    }
+  }
+  label {
+    display: block;
+    margin-bottom: 2px;
+  }
+  input {
+    width: 400px;
+    padding: 10px;
+    border: 2px solid #5d9cec;
+    border-radius: 5px;
+  }
+}
