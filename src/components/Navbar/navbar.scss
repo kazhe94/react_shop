@@ -50,7 +50,15 @@
 }
 .search-form {
   display: flex;
+  position: relative;
   //flex: 1 1 auto;
+  span {
+    position: absolute;
+    top: 20%;
+    right: 70px;
+    color: #9b9b9b;
+    cursor: pointer;
+  }
   &__input {
     border: none;
     padding: 10px;

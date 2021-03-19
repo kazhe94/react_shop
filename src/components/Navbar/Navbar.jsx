@@ -1,12 +1,19 @@
-import React from "react";
-import {NavLink, useRouteMatch} from 'react-router-dom'
+import React, {useState} from "react";
+import {NavLink, useHistory, useRouteMatch} from 'react-router-dom'
 import logo from '../../logo.svg'
 import './navbar.scss'
 import cart from '../../store/cart'
 import {observer} from "mobx-react-lite";
 
 const Navbar = observer(()=> {
+    const [search, setSearch] = useState('')
+    const history = useHistory()
     let { url } = useRouteMatch();
+    const inputSearch = (e) => {
+        e.preventDefault()
+        history.push(`${url}?title=${search}`)
+        setSearch('')
+    }
     return (
         <nav className={'navbar'}>
             <div className="navbar__inner">
@@ -16,8 +23,12 @@ const Navbar = observer(()=> {
                 </NavLink>
                 <div className={'form__inner'}>
                     <form className={'search-form'}>
-                        <input className={'search-form__input'} type="text" placeholder={'Искать на ReactShop'}/>
-                        <button className={'search-form__btn'} type={'submit'}>Найти</button>
+                        <input className={'search-form__input'}
+                               value={search} type="text"
+                               placeholder={'Искать на ReactShop'}
+                               onChange={(e) => setSearch(e.target.value)}/>
+                        {search ? <span onClick={() => setSearch('')}>&#10006;</span> : null}
+                        <button className={'search-form__btn'} type={'submit'} onClick={inputSearch}>Найти</button>
                     </form>
                 </div>
                 <ul className="controls">

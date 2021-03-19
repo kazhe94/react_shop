@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import store from "../../store/store";
-import cart from "../../store/cart";
-import {computed} from "mobx";
 import {observer} from "mobx-react-lite";
 import Loader from "../../components/Loader/Loader";
 import ProductControls from "../../components/Product/ProductControls";
@@ -11,9 +9,8 @@ import './product.scss'
 
 const Product = observer(() => {
     const [product, setProduct] = useState()
+    const history = useHistory()
     const {id} = useParams()
-    const inCart = computed(()=> cart.cartItem(id)).get()
-    console.log(inCart)
     useEffect(() => {
         (async () => {
             const data = await store.fetchOne(id)
@@ -23,7 +20,10 @@ const Product = observer(() => {
     if(product) {
         return (
             <div className="container">
-                <h1 className={'title'}>{product.title}</h1>
+                <div className="cart__top">
+                    <h1 className={'title'}>{product.title}</h1>
+                    <button className="btn" onClick={() => history.goBack()}>Назад</button>
+                </div>
                 <div className="product-page">
                     <div className="product-page__info">
                         <div className="product-page__img">
