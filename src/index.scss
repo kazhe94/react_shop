@@ -50,3 +50,8 @@ button {
     cursor: not-allowed;
   }
 }
+.form-control {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

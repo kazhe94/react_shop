@@ -5,6 +5,7 @@ import Cart from "../views/Cart/Cart";
 import Auth from "../views/Auth/Auth";
 import Home from "../views/Home/Home";
 import Product from "../views/Product/Product";
+import Favorites from "../views/Favorites/Favorites";
 
 const MainLayout = ()=> {
     let { path } = useRouteMatch();
@@ -15,6 +16,7 @@ const MainLayout = ()=> {
             <Switch>
                 <Route path={'/home'} exact component={Home}/>
                 <Route path={`${path}/product/:id`} component={Product}/>
+                <Route path={`${path}/favorites`} component={Favorites}/>
                 <Route path={`${path}/cart`} component={Cart}/>
                 <Route path={`${path}/auth`} component={Auth}/>
             </Switch>

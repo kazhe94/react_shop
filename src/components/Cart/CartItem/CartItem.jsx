@@ -26,6 +26,7 @@ const CartItem = observer((props) => {
             </div>
             <div className="cart__item-controls">
                 <ProductControls quantity={inCart} count={product.count} id={props.id}/>
+                <button className="btn" onClick={() => cart.removeFromCart(props.id)}>Удалить</button>
             </div>
         </li>
     )

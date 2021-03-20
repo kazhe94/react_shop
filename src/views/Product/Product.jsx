@@ -5,18 +5,23 @@ import {observer} from "mobx-react-lite";
 import Loader from "../../components/Loader/Loader";
 import ProductControls from "../../components/Product/ProductControls";
 import './product.scss'
+import Feedback from "../../components/Feedback/Feedback";
 
 
 const Product = observer(() => {
     const [product, setProduct] = useState()
+    const [feedback, setFeedback] = useState(null)
     const history = useHistory()
     const {id} = useParams()
     useEffect(() => {
         (async () => {
-            const data = await store.fetchOne(id)
-            setProduct(data)
+            const product = await store.fetchOne(id)
+            const feedback = await store.fetchFeedback(id)
+            setFeedback(feedback ?? [])
+            setProduct(product)
         })()
     }, [id])
+
     if(product) {
         return (
             <div className="container">
@@ -33,6 +38,7 @@ const Product = observer(() => {
                         <ProductControls id={id} count={product.count} price={product.price}/>
                     </div>
                 </div>
+                <Feedback id={id} feedback={feedback}/>
             </div>
         )
     } else {

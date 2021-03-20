@@ -4,6 +4,7 @@ import cart from "../../store/cart";
 import {observer} from "mobx-react-lite";
 import {currency} from "../../utils/currency";
 import {computed} from "mobx";
+import {Tooltip} from "@material-ui/core";
 
 const ProductControls = observer((props) => {
     const inCart = computed(() => cart.cartItem(props.id)).get()
@@ -29,7 +30,9 @@ const ProductControls = observer((props) => {
         )
     } else {
         return <div className={'product__controls'}>
-            <button className="product__price" onClick={addToCart}>{currency(props.price)}</button>
+            <Tooltip title={'Нажмите, чтобы доваить в корзину'}>
+                <button className="product__price" onClick={addToCart}>{currency(props.price)}</button>
+            </Tooltip>
         </div>
     }
 })

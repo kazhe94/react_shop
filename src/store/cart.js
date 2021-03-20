@@ -29,6 +29,10 @@ class Cart {
         this.cart = {}
         localStorage.removeItem('cart')
     }
+    removeFromCart(id) {
+        delete this.cart[id]
+        localStorage.setItem('cart', JSON.stringify(this.cart))
+    }
     cartItem(id) {
         return this.cart[id] ?? 0
     }
