@@ -17,6 +17,10 @@ class Favorites {
     isInFavorites(productId) {
         return !!this.favorites.find(el => el === productId)
     }
+    get allFavorites() {
+        console.log(this.favorites)
+        return this.favorites
+    }
 }
 
 export default new Favorites()
